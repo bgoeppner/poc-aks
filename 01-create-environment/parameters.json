@@ -6,7 +6,7 @@
             "value": null
         },
         "virtualNetwork_name": {
-            "value": null
+            "value": "dev"
         },
         "containerRegistry_name": {
             "value": null

@@ -14,14 +14,6 @@
         },
         "managedCluster_name": {
             "type": "String"
-        },
-        "workspaces_externalid": {
-            //"defaultValue": "/subscriptions/2a829c74-f4d4-4ca7-9fab-797cc4d280ea/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-2a829c74-f4d4-4ca7-9fab-797cc4d280ea-WEU",
-            "type": "String"
-        },
-        "publicIPAddresses_externalid": {
-            //"defaultValue": "/subscriptions/2a829c74-f4d4-4ca7-9fab-797cc4d280ea/resourceGroups/MC_test1_bensawesomeaks_westeurope/providers/Microsoft.Network/publicIPAddresses/f31ce932-52e9-4a73-bead-4e0219c3c692",
-            "type": "String"
         }
     },
     "variables": {},
@@ -141,10 +133,7 @@
                         "enabled": false
                     },
                     "omsagent": {
-                        "enabled": true,
-                        "config": {
-                            "logAnalyticsWorkspaceResourceID": "[parameters('workspace_externalid')]"
-                        }
+                        "enabled": false                        
                     }
                 },
                 "nodeResourceGroup": "[concat('MC_', parameters('resourceGroup_name'), '_', parameters('managedCluster_name'), '_westeurope')]",
@@ -177,7 +166,7 @@
             "apiVersion": "2020-03-01",
             "name": "[concat(parameters('virtualNetwork_name'), '/k8s')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_name'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetwork_name'))]"
             ],
             "properties": {
                 "addressPrefix": "10.0.1.0/24",
